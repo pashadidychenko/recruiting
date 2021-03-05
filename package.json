@@ -1,7 +1,7 @@
 {
-  "name": "react-webpack-typescript-starter",
+  "name": "test_app_recruiting",
   "version": "0.1.0",
-  "description": "Starter kit for React, Webpack (with Hot Module Replacement), Typescript and Babel.",
+  "description": "Test App for Job",
   "keywords": [
     "react",
     "webpack",
@@ -12,23 +12,23 @@
     "starter",
     "boilerplate"
   ],
-  "author": "Viktor Persson",
+  "author": "Pasha Didychenko",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vikpe/react-webpack-typescript-starter.git"
+    "url": "git+https://github.com/pashadidychenko/recruiting.git"
   },
   "bugs": {
-    "url": "https://github.com/vikpe/react-webpack-typescript-starter/issues"
+    "url": "https://github.com/pashadidychenko/recruiting"
   },
-  "homepage": "https://github.com/vikpe/react-webpack-typescript-starter",
+  "homepage": "https://github.com/pashadidychenko/recruiting",
   "scripts": {
-    "build": "yarn run clean-dist && webpack --config=configs/webpack/prod.js",
+    "build": "npm run clean-dist && webpack --config=configs/webpack/prod.js",
     "clean-dist": "rimraf dist/*",
     "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
     "start": "npm run start-dev",
     "start-dev": "webpack serve --config=configs/webpack/dev.js",
-    "start-prod": "yarn run build && node express.js",
+    "start-prod": "npm run build && node express.js",
     "test": "jest --coverage --watchAll --config=configs/jest.json"
   },
   "devDependencies": {
