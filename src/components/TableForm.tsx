@@ -12,7 +12,7 @@ function TableForm({ dataTable }) {
           <tr>
             <th>ID</th>
             {headerData.map((data, inx) => (
-              <th key={inx}>{data}</th>
+              <th key={inx}>{data.trim()}</th>
             ))}
             <th>Duplicate with</th>
           </tr>

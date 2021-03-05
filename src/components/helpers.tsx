@@ -1,4 +1,5 @@
 import "../assets/scss/App.scss"
+import moment from 'moment'
 
 // Массив для временного хранения индексов дубликатов
 let sameIndex = [];
@@ -57,11 +58,38 @@ function validateYearlyIncome(yearlyIncomy) {
   return <td>{Number(yearlyIncomy).toFixed(2)}</td>
 }
 
+// Функция валидации детей
+function validateСhildren(childrenData) {
+    if(childrenData.length === 0 || childrenData.toLowerCase() === "false"){
+        return <td>FALSE</td>
+    }
+    if(childrenData.toLowerCase() === "true"){
+        return <td>TRUE</td>
+    }
+        return <td className="errorData">{childrenData.trim()}</td>
+}
+
+// Функция валидации штатов
+function validateLicenseStates(dataState) { 
+return <td>{dataState.split(",").map(el=>el.trim().slice(0, 2).toUpperCase()).join(" | ")}</td>
+}
+
 // Функция валидации Даты
 function validateExpirationDate(tableDate) {
-   let date1 = new Date();
-   let date2 = new Date(tableDate);   
-    return <td>{tableDate}</td>
+    let now = moment();
+   if(moment(tableDate, "MM/DD/YYYY").format("MM/DD/YYYY") === tableDate){
+       if(moment(tableDate).isSameOrAfter(now.format('MM/DD/YYYY'))){
+        return <td>{tableDate}</td>
+       }
+       return <td className="errorData">{tableDate}</td>
+   }
+   if(moment(tableDate, "YYYY-MM-DD").format("YYYY-MM-DD") === tableDate){
+    if(moment(tableDate).isSameOrAfter(now.format('YYYY-MM-DD'))){
+        return <td>{tableDate}</td>
+       }
+       return <td className="errorData">{tableDate}</td>
+}
+    return <td className="errorData">{tableDate}</td>
 }
 
 // Функция валидации лицензии
@@ -83,8 +111,8 @@ function greatRow(dataTable, data, index){
       {validateAge(data.Age)}
       {validateExperience(data.Age, data.Experience)}
       {validateYearlyIncome(data.['Yearly Income'])}
-      <td>{data.['Has children'].length !== 0 ? data.['Has children'].trim() : "FALSE"}</td>
-      <td>{data.['License states'].split(",").join(" |")}</td>
+      {validateСhildren(data.['Has children'])}
+      {validateLicenseStates(data.['License states'])}
       {validateExpirationDate(data.['Expiration date'])}
       {validateLicenseNumber(data.['License number'])}
       <td>{sameIndex.join(' / ')}</td>
