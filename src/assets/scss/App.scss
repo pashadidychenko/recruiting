@@ -1,0 +1,19 @@
+$bg-color: yellow;
+$error-color: red;
+$error-text-color: black;
+
+.app {
+  font-family: helvetica, arial, sans-serif;
+  padding: 2em;
+
+  p {
+    color: $error-text-color;
+  }
+}
+
+.errorData {
+  background-color: $error-color;
+}
+
+.inActive {
+}
